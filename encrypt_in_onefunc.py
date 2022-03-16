@@ -1,26 +1,20 @@
 abc = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
        's', 't', 'u', 'v', 'w', 'x', 'y', 'z','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
        's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-order= input("order 'encode' to encrypt, 'decode' to decrypt:\n")
-text = input("Type your message:\n").lower()
-shift = int(input("Type the shift number:\n"))
+order= input("1,encode to encrypt\n2,decode to decrypt\n select:\n")
+text = input("your message:\n").lower()
+shift = int(input("shift number:\n"))
 
-def encrypt(inputed_text, shift_amount):
-    cipher_text=""
-    for letter in inputed_text:
+def en_decrypt(inputed_text1,shift_amount1,inputed_order1):
+    result_text=""
+    for letter in inputed_text1:
         position=abc.index(letter)
-        new_position=position+shift_amount
-        cipher_text+=abc[new_position]
-    print(f"the encoded text is {cipher_text}")
+        if inputed_order1=="1":
+            new_position=position+shift_amount1
+            result_text += abc[new_position]
+        else:
+            new_position=position-shift_amount1
+            result_text+=abc[new_position]
+    print(f"the encoded text is {result_text}")
+en_decrypt(inputed_text1=text, shift_amount1=shift, inputed_order1=order)
 
-def decrypt(inputed_text, shift_amount):
-    decipher_text=""
-    for letter in inputed_text:
-        position=abc.index(letter)
-        new_position=position-shift_amount
-        decipher_text+=abc[new_position]
-    print(f"decoded text is {decipher_text}")
-if order=="encode":
-    encrypt(inputed_text=text, shift_amount=shift)
-elif order=="decode":
-    decrypt(inputed_text=text, shift_amount=shift)
